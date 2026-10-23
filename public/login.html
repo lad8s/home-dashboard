@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home — Sign in</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    const t = localStorage.getItem('theme');
+    if (t) document.documentElement.dataset.theme = t;
+  </script>
+</head>
+<body class="login">
+  <form class="card" method="post" action="/api/login">
+    <h1>Home</h1>
+    <p class="sub">Sign in to see the apps.</p>
+    <input name="user" placeholder="Username" autocomplete="username" autocapitalize="none" spellcheck="false" required autofocus>
+    <input name="password" type="password" placeholder="Password" autocomplete="current-password" required>
+    <p id="error" class="error" hidden>Wrong username or password.</p>
+    <button type="submit">Sign in</button>
+  </form>
+  <script>
+    if (new URLSearchParams(location.search).has('e')) document.getElementById('error').hidden = false;
+  </script>
+</body>
+</html>
