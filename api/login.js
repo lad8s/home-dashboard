@@ -1,6 +1,6 @@
 // POST /api/login  (form fields: user, password)
 // USERS env var: "name1:password1,name2:password2". Names are not case-sensitive.
-import { COOKIE, MAX_AGE_DAYS, makeToken, safeEqual } from '../lib/session.js';
+import { makeToken, safeEqual, sessionCookie } from '../lib/session.js';
 
 function redirect(location, cookie) {
   const headers = { Location: location };
@@ -29,7 +29,5 @@ export async function POST(request) {
     return redirect('/login?e=1');
   }
 
-  const token = await makeToken(user, process.env.SESSION_SECRET);
-  const maxAge = MAX_AGE_DAYS * 86400;
-  return redirect('/', `${COOKIE}=${token}; Path=/; Max-Age=${maxAge}; HttpOnly; Secure; SameSite=Lax`);
+  return redirect('/', sessionCookie(await makeToken(user, process.env.SESSION_SECRET)));
 }

@@ -52,3 +52,4 @@ $('#theme').addEventListener('click', () => {
 });
 
 render();
+fetch('/api/refresh'); // renew the login on each visit
