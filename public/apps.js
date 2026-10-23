@@ -6,16 +6,19 @@ const HOSTS = {
 };
 
 // daily: true → top section. Everything else → "All apps".
+// path (optional) → the page to open inside the app, for example Nextcloud Files.
 const APPS = [
-  { name: 'Nextcloud',    port: 8080, icon: 'nextcloud',    daily: true },
+  { name: 'Nextcloud',    port: 8080, icon: 'nextcloud',    daily: true, path: '/apps/files/files' },
   { name: 'TriliumNext',  port: 8075, icon: 'triliumnext',  daily: true },
   { name: 'Donetick',     port: 8085, icon: 'donetick',     daily: true },
   { name: 'KitchenOwl',   port: 8095, icon: 'kitchenowl',   daily: true },
   { name: 'Jellyfin',     port: 8096, icon: 'jellyfin',     daily: true },
   { name: 'Seerr',        port: 5055, icon: 'seerr',        daily: true },
+  { name: 'Firefly III',  port: 9090, icon: 'firefly-iii' },
   { name: 'qBittorrent',  port: 8090, icon: 'qbittorrent' },
   { name: 'Radarr',       port: 7878, icon: 'radarr' },
   { name: 'Sonarr',       port: 8989, icon: 'sonarr' },
+  { name: 'Bazarr',       port: 6767, icon: 'bazarr' },
   { name: 'Prowlarr',     port: 9696, icon: 'prowlarr' },
   { name: 'Syncthing',    port: 8384, icon: 'syncthing' },
   { name: 'FlareSolverr', port: 8191, icon: 'flaresolverr' },
@@ -30,7 +33,7 @@ function render() {
     btn.setAttribute('aria-pressed', btn.dataset.mode === mode);
   }
   const tile = app => `
-    <a class="app" href="http://${host}:${app.port}/" target="_blank" rel="noopener">
+    <a class="app" href="http://${host}:${app.port}${app.path || '/'}" target="_blank" rel="noopener">
       <span class="icon"><img src="/icons/${app.icon}.svg" alt=""></span>
       <span class="label">${app.name}</span>
     </a>`;
