@@ -14,7 +14,7 @@ const APPS = [
   { name: 'KitchenOwl',   port: 8095, icon: 'kitchenowl',   daily: true },
   { name: 'Jellyfin',     port: 8096, icon: 'jellyfin',     daily: true },
   { name: 'Seerr',        port: 5055, icon: 'seerr',        daily: true },
-  { name: 'Firefly III',  port: 9090, icon: 'firefly-iii' },
+  { name: 'Firefly III',  port: 9090, icon: 'firefly-iii',  daily: true },
   { name: 'Firefly Importer', port: 9091, icon: 'firefly-iii' },
   { name: 'qBittorrent',  port: 8090, icon: 'qbittorrent' },
   { name: 'Radarr',       port: 7878, icon: 'radarr' },
