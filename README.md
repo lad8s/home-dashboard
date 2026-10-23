@@ -40,6 +40,7 @@ The page remembers the switch, and the light or dark mode, in the browser.
 
 1. Open `public/apps.js`.
 2. Add, remove, or change a line in `APPS`. Set `daily: true` to put the app in the top section.
+   Set `path` to open a page inside the app, for example `path: '/apps/files/files'` for Nextcloud Files.
 3. For a new icon, find the app name in [dashboard-icons](https://github.com/homarr-labs/dashboard-icons/tree/main/svg).
 4. Save the SVG file in `public/icons/`.
 
