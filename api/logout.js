@@ -7,6 +7,7 @@ export function GET() {
     headers: {
       Location: '/login',
       'Set-Cookie': `${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax`,
+      'Cache-Control': 'no-store',
     },
   });
 }

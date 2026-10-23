@@ -11,7 +11,8 @@ The page is only a list of links. The Pi stays closed to the internet. A link wo
 | Part | File | What it does |
 |---|---|---|
 | Login page | `public/login.html` | Shows the username and password fields. |
-| Login check | `api/login.js` | Compares the username and password with the `USERS` variable. If they agree, it sets a signed cookie for 30 days. |
+| Login check | `api/login.js` | Compares the username and password with the `USERS` variable. If they agree, it sets a signed cookie for 400 days. |
+| Login renewal | `api/refresh.js` | Gives the browser a new 400-day cookie at each visit to the app page. |
 | Log out | `api/logout.js` | Removes the cookie. |
 | Gate | `middleware.js` | Sends a visitor without a valid cookie to the login page. The app list is behind this gate too. |
 | Cookie signature | `lib/session.js` | Signs and checks the cookie with `SESSION_SECRET`. |
@@ -62,6 +63,8 @@ node dev.mjs
 - A password can use any character, but not a comma.
 - The username is not case-sensitive. The password is case-sensitive.
 - A wrong login waits 1 second before the error shows. This makes guessing slow.
+- The browser or the phone can save the username and password. The login fields have the correct tags for a password manager.
+- A login stays active for 400 days. Browsers do not keep a cookie for a longer time. Each visit starts the 400 days again. Thus a login ends only after 400 days with no visit.
 - Use a password that is not a short number. A short number is easy to guess.
 
 ## Put the site on the internet (first time)
